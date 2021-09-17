@@ -1,0 +1,52 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@interfaces": ["src/app/@interfaces*"],
+      "@interfaces/": ["src/app/@interfaces/*"],
+      "@services": ["src/app/@services*"],
+      "@services/": ["src/app/@services/*"],
+      "pipes/": ["src/app/@shared/pipes/*"],
+      "@shared": ["src/app/@shared*"],
+      "@shared/": ["src/app/@shared/*"],
+      "@provider": ["src/app/@provider*"],
+      "@provider/": ["src/app/@provider/*"],
+      "layout": ["src/app/layout*"],
+      "layout/": ["src/app/layout/*"],
+      "feature": ["src/app/feature*"],
+      "feature/": ["src/app/feature/*"],
+      "listGroup": ["src/app/feature/listGroup*"],
+      "listGroup/": ["src/app/feature/listGroup/*"],
+      "map": ["src/app/feature/map*"],
+      "map/": ["src/app/feature/map/*"],
+      "sidebar": ["src/app/feature/sidebar*"],
+      "sidebar/": ["src/app/feature/sidebar/*"],
+    },
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
