@@ -7,6 +7,7 @@ import { SharedModule } from '@app/@shared/shared.module';
 import { SidebarComponent } from '@app/features/sidebar/sidebar.component';
 import { ListpoisComponent } from '@app/features/listpois/listpois.component';
 import { ListGroupComponent } from '@app/features/listgroup/listgroup.component';
+import { ModalComponent } from '@app/features/modal/modal.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ListGroupComponent } from '@app/features/listgroup/listgroup.component'
     MapComponent,
     SidebarComponent,
     ListpoisComponent,
-    ListGroupComponent
+    ListGroupComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

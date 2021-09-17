@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import { iPois } from '@app/@interfaces/pois';
-import { Provider } from '@app/@provider/provider';
+import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 
 
@@ -27,12 +27,12 @@ export class ListGroupComponent implements OnInit {
   ngOnInit():void {
 
     if(this.groupPOISProvider.mapReady === true) {
-      this.groups = this.extractGroups()
+      this.groups = this.getGroupsPois()
       return
     }
     this.groupPOISProvider.on("wf.map.ready").subscribe(() => {
       this.groupPOISProvider.mapReady = true;
-      this.groups = this.extractGroups()
+      this.groups = this.getGroupsPois()
     })
 
     this.groupPOISProvider.on("wf.poi.click").subscribe((poi: any) => {
@@ -40,7 +40,7 @@ export class ListGroupComponent implements OnInit {
     }) 
   }
 
-  extractGroups(): iPois[] {
+  getGroupsPois(): iPois[] {
     let arr:iPois[] = []
     let _poisGroups = this.poifinder.getPOIGroups();
     console.log("poisGroups", _poisGroups);

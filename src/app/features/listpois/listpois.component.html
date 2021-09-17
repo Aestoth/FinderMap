@@ -5,7 +5,7 @@
         <h4>{{ poi.names.translations.en }}</h4>
       </ion-text>
     </ion-label>
-    <ion-button fill="clear" slot="end">
+    <ion-button fill="clear" slot="end" (click)="showModal(poi)">
         <ion-icon color="blue" name="information-circle-outline"></ion-icon>
       </ion-button>
     <ion-button fill="clear" slot="end" (click)="clickPath(poi.node)">

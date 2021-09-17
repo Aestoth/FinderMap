@@ -1,5 +1,15 @@
-<canvas id="map" width="400" height="900"></canvas>
-<div *ngFor="let floor of floors" (click)="onClick(floor)">{{floor.names.translations.en}}</div>
+<ion-grid>
+    <ion-row>
+        <div id="mapContainer">
+            <canvas id="map"></canvas>
+        </div>
+        <div id="floors-menu">
+            <button  *ngFor="let floor of floors" class="floor-button" (click)="onClick(floor)">{{floor.names.translations.en}}</button>  
+        </div>
+    </ion-row>
+</ion-grid>
+
+
 
   
 

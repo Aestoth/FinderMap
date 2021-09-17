@@ -1,0 +1,40 @@
+<ion-header class="ion-text-center">
+  <ion-toolbar color="primary">
+    <ion-title>{{ modalPoi.names.translations?.en }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light" class="ion-text-center">
+  <ion-item>
+    <ion-thumbnail>
+      <img src="{{ modalPoi.icon.currentSrc }}" />
+    </ion-thumbnail>
+  </ion-item>
+  <ion-item>
+    <ion-text>
+      <p>{{ modalPoi.descriptions?.translations?.en }}</p>
+    </ion-text>
+  </ion-item>
+</ion-content>
+
+<!-- <ion-item class="poi-info">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-text slot="start" class="description">
+    {{ modalPoi.descriptions?.translations?.en }}
+  </ion-text>
+  <ion-item class="image">
+    <img src="{{ modalPoi.icon.currentSrc }}" />
+  </ion-item>
+</ion-item> -->

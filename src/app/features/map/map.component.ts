@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { iFloors } from '@app/@interfaces/floors';
 import { iPois } from '@app/@interfaces/pois';
-import { Provider } from '@app/@provider/provider';
+import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 
 

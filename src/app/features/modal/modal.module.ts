@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { KeysPipe } from './pipes/keys.pipe';
+import { ModalComponent } from './modal.component';
+
+
 
 
 
 @NgModule({
   declarations: [
-    KeysPipe
+    ModalComponent
   ],
   imports: [
     CommonModule
   ],
-  exports: [
-    KeysPipe
-  ]
+  exports: [ModalComponent]
 })
-export class SharedModule { }
+export class ModalModule { }

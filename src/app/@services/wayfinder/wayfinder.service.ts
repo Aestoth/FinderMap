@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { iPois } from '@app/@interfaces/pois';
-import { Provider } from '@app/@provider/provider';
+import { Provider } from '@app/@provider/eventprovider';
 
 
 
@@ -79,10 +79,5 @@ export class WayfinderService {
       return this.wf.translator.get(key, params)
     }
   }
-
-  public clickPath(wf: any, poi: iPois) {
-    wf.showPath(poi) 
-   }
-
 
 }
