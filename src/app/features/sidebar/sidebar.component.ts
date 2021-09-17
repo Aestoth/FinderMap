@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { iPois } from '@app/@interfaces/pois';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +11,7 @@ export class SidebarComponent implements OnInit {
   public activatedSegment: string = "group"
   public rubriques = "rubriques"
   public all = "A - Z"
+  public currentList: iPois[] = []
 
   constructor() { }
 

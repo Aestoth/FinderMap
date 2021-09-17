@@ -2,14 +2,16 @@
   <ion-segment-button value="group">
     <ion-label>{{ rubriques }}</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="floor">
+  <ion-segment-button value="all">
     <ion-label>{{ all }}</ion-label>
   </ion-segment-button>
 </ion-segment>
 <div [ngSwitch]="true">
   <ng-container *ngSwitchCase="activatedSegment === 'group'">
-    <app-listgroup></app-listgroup>
+    <app-listgroup [groupPois]="currentList"></app-listgroup>
   </ng-container>
-  <ng-container *ngSwitchCase="activatedSegment === 'floor'"> </ng-container>
+  <ng-container *ngSwitchCase="activatedSegment === 'all'"> 
+    <app-listpois [Pois]="currentList"></app-listpois>
+  </ng-container>
   <ng-container *ngSwitchDefault> </ng-container>
 </div>

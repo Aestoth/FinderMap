@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar.component';
+import { MapComponent } from './map.component';
 import { IonicModule } from '@ionic/angular';
 
 
 
 @NgModule({
   declarations: [
-    SidebarComponent
+    MapComponent,
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
   ],
-  exports: [SidebarComponent]
+  exports: [
+    MapComponent
+  ]
 })
-export class SidebarModule { }
+export class MapModule { }

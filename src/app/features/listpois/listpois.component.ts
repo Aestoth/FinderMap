@@ -1,0 +1,58 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { iPois } from '@app/@interfaces/pois';
+import { Provider } from '@app/@provider/provider';
+import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
+
+@Component({
+  selector: 'app-listpois',
+  templateUrl: './listpois.component.html',
+  styleUrls: ['./listpois.component.scss']
+})
+export class ListpoisComponent implements OnInit {
+
+  public allPoiFinder: any
+  public pois!: iPois[]
+  public max: number = 10;
+
+  @Input('Pois') allPois: iPois[] = this.pois
+  
+  constructor(private listPoisService: WayfinderService, private poisProvider: Provider) {
+    this.allPoiFinder = this.listPoisService
+  }
+
+  ngOnInit(): void {
+
+    if(this.poisProvider.mapReady === true) {
+      this.pois = this.extractPois()
+      return
+    }
+    this.poisProvider.on("wf.map.ready").subscribe(() => {
+      this.poisProvider.mapReady = true;
+      this.pois = this.extractPois()
+    })
+
+  }
+
+  extractPois(): iPois[] {
+    let arr:iPois[] = []
+    let _pois = this.allPoiFinder.getPOIs();
+    Object.keys(_pois).forEach((key: string) => {
+      if(_pois[key].showInMenu) arr.push(_pois[key] as iPois)
+    })
+    console.log("arrPois", arr)
+    return arr
+  }
+
+  clickPath(poi: iPois) {
+   this.allPoiFinder.showPath(poi) 
+  }
+
+  loadData($event: any) {
+    if (this.pois?.length||0 < this.max) {
+      console.log('more...');  
+      this.max += 10;
+    }
+    $event.target.complete();
+  }
+
+}

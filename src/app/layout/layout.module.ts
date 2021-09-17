@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
-import { ListGroupComponent } from '@app/feature/listGroup/listgroup.component';
-import { MapComponent } from '@app/feature/map/map.component';
+import { MapComponent } from '@app/features/map/map.component';
 import { IonicModule } from '@ionic/angular';
-import { SidebarComponent } from '@app/feature/sidebar/sidebar.component';
 import { SharedModule } from '@app/@shared/shared.module';
-
-
-
-
+import { SidebarComponent } from '@app/features/sidebar/sidebar.component';
+import { ListpoisComponent } from '@app/features/listpois/listpois.component';
+import { ListGroupComponent } from '@app/features/listgroup/listgroup.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    ListGroupComponent,
     MapComponent,
-    SidebarComponent
+    SidebarComponent,
+    ListpoisComponent,
+    ListGroupComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
     SharedModule
-  ]
+  ],
+  exports: [LayoutComponent]
 })
 export class LayoutModule { }

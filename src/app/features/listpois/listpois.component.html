@@ -1,0 +1,26 @@
+<ion-list>
+  <ion-item *ngFor="let poi of pois">
+    <ion-label slot="start">
+      <ion-text>
+        <h4>{{ poi.names.translations.en }}</h4>
+      </ion-text>
+    </ion-label>
+    <ion-button fill="clear" slot="end">
+        <ion-icon color="blue" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    <ion-button fill="clear" slot="end" (click)="clickPath(poi.node)">
+      <ion-icon
+        color="blue"
+        slot="icon-only"
+        name="location-outline"
+      ></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

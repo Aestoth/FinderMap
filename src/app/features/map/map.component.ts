@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { iFloors } from '@app/@interfaces/floors';
+import { iPois } from '@app/@interfaces/pois';
 import { Provider } from '@app/@provider/provider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 
@@ -30,6 +31,7 @@ export class MapComponent implements OnInit {
       this.floors = this.extractFloors()
       console.log("_floors", this.floors)
     })
+
   }
 
   onClick(floor: any){

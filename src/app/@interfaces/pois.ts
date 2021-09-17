@@ -3,4 +3,5 @@ export interface iPois {
     names: {translations:{en:string}}
     translations? : string
     floor?: string
+    node?: any
 }

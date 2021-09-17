@@ -80,6 +80,9 @@ export class WayfinderService {
     }
   }
 
-  
+  public clickPath(wf: any, poi: iPois) {
+    wf.showPath(poi) 
+   }
+
 
 }
