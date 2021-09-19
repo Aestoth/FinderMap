@@ -8,6 +8,7 @@ import { SidebarComponent } from '@app/features/sidebar/sidebar.component';
 import { ListpoisComponent } from '@app/features/listpois/listpois.component';
 import { ListGroupComponent } from '@app/features/listgroup/listgroup.component';
 import { ModalComponent } from '@app/features/modal/modal.component';
+import { SearchComponent } from '@app/features/search/search.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ModalComponent } from '@app/features/modal/modal.component';
     SidebarComponent,
     ListpoisComponent,
     ListGroupComponent,
-    ModalComponent
+    ModalComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

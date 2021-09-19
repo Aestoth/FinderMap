@@ -5,6 +5,7 @@ import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
 
+
 @Component({
   selector: 'app-listpois',
   templateUrl: './listpois.component.html',
@@ -13,8 +14,9 @@ import { ModalComponent } from '../modal/modal.component';
 export class ListpoisComponent implements OnInit {
 
   public allPoiFinder: any
-  public pois!: iPois[]
+  public pois: iPois[] = []
   public max: number = 10;
+  public searchTerm: string = ''
 
   @Input('Pois') allPois: iPois[] = this.pois
   
@@ -69,6 +71,10 @@ export class ListpoisComponent implements OnInit {
       this.max += 10;
     }
     $event.target.complete();
+  }
+
+  searchFilter($event: any) {
+    this.searchTerm = $event.detail.value
   }
 
 }

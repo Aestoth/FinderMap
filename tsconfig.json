@@ -28,6 +28,8 @@
       "map/": ["src/app/features/map/*"],
       "sidebar": ["src/app/features/sidebar*"],
       "sidebar/": ["src/app/features/sidebar/*"],
+      "search": ["src/app/features/search*"],
+      "search/": ["src/app/features/search/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

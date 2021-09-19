@@ -1,14 +1,17 @@
+<ion-header>
+  <app-search (ionChange)="searchFilter($event)"></app-search>
+</ion-header>
 <ion-list>
-  <ion-item *ngFor="let poi of pois">
+  <ion-item *ngFor="let list of pois | poiSearch: searchTerm">
     <ion-label slot="start">
       <ion-text>
-        <h4>{{ poi.names.translations.en }}</h4>
+        <h4>{{ list.names.translations.en }}</h4>
       </ion-text>
     </ion-label>
-    <ion-button fill="clear" slot="end" (click)="showModal(poi)">
+    <ion-button fill="clear" slot="end" (click)="showModal(list)">
         <ion-icon color="blue" name="information-circle-outline"></ion-icon>
       </ion-button>
-    <ion-button fill="clear" slot="end" (click)="clickPath(poi.node)">
+    <ion-button fill="clear" slot="end" (click)="clickPath(list.node)">
       <ion-icon
         color="blue"
         slot="icon-only"

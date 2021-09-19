@@ -9,16 +9,12 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  public poi: iPois[] = []
 
   @Input() modalPoi!: iPois
 
   constructor(private modal: ModalController) { }
 
-  ngOnInit(): void {
-    console.log("modal", this.modalPoi);
-    console.log("image", this.modalPoi.icon.currentSrc)
-       
+  ngOnInit(): void {    
   }
 
   dismiss() {

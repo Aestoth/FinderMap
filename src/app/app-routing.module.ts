@@ -10,8 +10,8 @@ const routes: Routes = [
     }]
   },
   {
-    path: "",
-    redirectTo: "/",
+    path: '',
+    redirectTo: '/',
     pathMatch: "full"
   },
 ];

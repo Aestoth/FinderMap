@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { iFloors } from '@app/@interfaces/floors';
-import { iPois } from '@app/@interfaces/pois';
 import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
-
-
 
 
 @Component({
@@ -28,7 +25,7 @@ export class MapComponent implements OnInit {
     this.wayfinder.open("2eebb99f3154c041f23acd836ccad09b")
 
     this.dataBroadcast.on("wf.data.loaded").subscribe(() => {
-      this.floors = this.extractFloors()
+      this.floors = this.getMapFloors()
       console.log("_floors", this.floors)
     })
 
@@ -38,7 +35,7 @@ export class MapComponent implements OnInit {
     this.wayfinder.showFloor(floor);
   }
 
-  extractFloors(): iFloors[] {
+  getMapFloors(): iFloors[] {
     let arr:iFloors[] = []
     let _floors = this.wayfinder.building.getSortedFloors();
     Object.keys(_floors).forEach((key: string) => {
