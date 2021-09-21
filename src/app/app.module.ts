@@ -6,18 +6,28 @@ import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
 import { Provider } from './@provider/eventprovider';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { ToastInstallComponent } from './features/toast-install/toast-install.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToastInstallComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [Provider],
   bootstrap: [AppComponent]

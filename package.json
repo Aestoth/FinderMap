@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "deploy:git": "ng deploy --base-href=/FinderMap/",
+    "deploy:firebase": "firebase deploy --only Hosting",
     "test": "ng test"
   },
   "private": true,
@@ -18,6 +20,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@angular/service-worker": "~12.2.0",
     "@ionic/angular": "^5.7.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
@@ -27,15 +30,16 @@
     "@angular-devkit/build-angular": "~12.2.1",
     "@angular/cli": "~12.2.1",
     "@angular/compiler-cli": "~12.2.0",
+    "@ionic/angular-toolkit": "latest",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.0-rc.2",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.5",
-    "@ionic/angular-toolkit": "latest"
+    "typescript": "~4.3.5"
   }
 }
