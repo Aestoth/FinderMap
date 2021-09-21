@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { merge, Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { ToastOptions } from '@ionic/core';
 import { ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
@@ -12,7 +11,7 @@ import { environment } from 'src/environments/environment';
   template: `
         <div *ngIf="updateAvailable$|async"> </div>
     `,
-    styles: [`./toast-install.component.scss`],
+    styles: [``],
     encapsulation: ViewEncapsulation.None,
 })
 export class ToastInstallComponent {
