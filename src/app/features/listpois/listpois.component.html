@@ -8,9 +8,9 @@
         <h4>{{ list.names.translations.en }}</h4>
       </ion-text>
     </ion-label>
-    <ion-button fill="clear" slot="end" (click)="showModal(list)">
-        <ion-icon color="blue" name="information-circle-outline"></ion-icon>
-      </ion-button>
+    <ion-button *ngIf="list.descriptions?.translations?.en" fill="clear" slot="end" (click)="showModal(list)">
+      <ion-icon color="blue" name="information-circle-outline"></ion-icon>
+    </ion-button>
     <ion-button fill="clear" slot="end" (click)="clickPath(list.node)">
       <ion-icon
         color="blue"
@@ -20,10 +20,3 @@
     </ion-button>
   </ion-item>
 </ion-list>
-
-<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-  <ion-infinite-scroll-content
-    loadingSpinner="bubbles"
-    loadingText="Loading more data...">
-  </ion-infinite-scroll-content>
-</ion-infinite-scroll>

@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+
 
 const routes: Routes = [
-  {path: '', component: LayoutComponent,
-  children: [
-    {
-      path: '', loadChildren: () => import ("./layout/layout.module").then(m => m.LayoutModule)
-    }]
+  {
+    path: 'tabs', loadChildren: () => import('./features/tabs/tabs.module').then(m => m.TabsModule)
   },
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: 'tabs',
     pathMatch: "full"
   },
 ];

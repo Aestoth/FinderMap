@@ -15,7 +15,6 @@ export class ListpoisComponent implements OnInit {
 
   public allPoiFinder: any
   public pois: iPois[] = []
-  public max: number = 10;
   public searchTerm: string = ''
 
   @Input('Pois') allPois: iPois[] = this.pois
@@ -60,17 +59,9 @@ export class ListpoisComponent implements OnInit {
       componentProps: {
         modalPoi: poi
       },
-      cssClass: 'custim-class'
+      cssClass: 'custom-class'
     })
     await poimodal.present();
-  }
-
-  loadData($event: any) {
-    if (this.pois?.length||0 < this.max) {
-      console.log('more...');  
-      this.max += 10;
-    }
-    $event.target.complete();
   }
 
   searchFilter($event: any) {

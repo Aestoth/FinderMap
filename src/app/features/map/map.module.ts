@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapComponent } from './map.component';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,6 +13,7 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     CommonModule,
     IonicModule,
+    RouterModule.forChild([{ path: 'map', component: MapComponent }])
   ],
   exports: [
     MapComponent

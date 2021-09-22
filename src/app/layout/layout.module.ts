@@ -9,6 +9,8 @@ import { ListpoisComponent } from '@app/features/listpois/listpois.component';
 import { ListGroupComponent } from '@app/features/listgroup/listgroup.component';
 import { ModalComponent } from '@app/features/modal/modal.component';
 import { SearchComponent } from '@app/features/search/search.component';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { SearchComponent } from '@app/features/search/search.component';
   imports: [
     CommonModule,
     IonicModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild([{ path: '', component: LayoutComponent}])
   ],
   exports: [LayoutComponent]
 })

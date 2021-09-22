@@ -6,6 +6,6 @@ export interface iPois {
     descriptions?: {translations:{en:string}}
     icon?: any
     currentSrc?: string
-    groups?: []
-    active?: boolean
+    groups: []
+    pois: []
 }

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Test</ion-title>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
   <ng-container *ngSwitchCase="activatedSegment === 'group'">
     <app-listgroup [groupPois]="currentList"></app-listgroup>
   </ng-container>
-  <ng-container *ngSwitchCase="activatedSegment === 'all'"> 
+  <ng-container *ngSwitchCase="activatedSegment === 'all'">
     <app-listpois [Pois]="currentList"></app-listpois>
   </ng-container>
   <ng-container *ngSwitchDefault> </ng-container>

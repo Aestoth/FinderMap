@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       # - run: npm test
-      - run: npm run deploy:firebase --if-present
+      - run: npm run deploy --if-present
 
         env:
           CI: true

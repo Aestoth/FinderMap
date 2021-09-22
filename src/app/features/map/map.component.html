@@ -9,13 +9,13 @@
 
 <div id="mapContainer">
   <canvas id="map"></canvas>
-</div>
-<div id="floors-menu">
-  <button
-    *ngFor="let floor of floors"
-    class="floor-button"
-    (click)="onClick(floor)"
-  >
-    {{ floor.names.translations.en }}
-  </button>
+  <div id="floors-menu">
+    <button
+      *ngFor="let floor of floors"
+      class="floor-button"
+      (click)="onClick(floor)"
+    >
+      {{ floor.names.translations.en }}
+    </button>
+  </div>
 </div>
