@@ -11,7 +11,6 @@ export class SidebarComponent implements OnInit {
   public activatedSegment: string = "group"
   public rubriques = "rubriques"
   public all = "A - Z"
-  public currentList: iPois[] = []
 
   constructor() { }
 

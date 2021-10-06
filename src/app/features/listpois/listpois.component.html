@@ -11,11 +11,8 @@
     <ion-button *ngIf="list.descriptions?.translations?.en" fill="clear" slot="end" (click)="showModal(list)">
       <ion-icon color="blue" name="information-circle-outline"></ion-icon>
     </ion-button>
-    <ion-button fill="clear" slot="end" (click)="clickPath(list.node)">
-      <ion-icon
-        color="blue"
-        slot="icon-only"
-        name="location-outline"
+    <ion-button fill="clear" slot="end" (click)="viewPath(list)">
+      <ion-icon color="blue" slot="icon-only" name="location-outline"
       ></ion-icon>
     </ion-button>
   </ion-item>

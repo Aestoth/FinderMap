@@ -13,9 +13,6 @@ export class AppComponent {
     this.displayToastInstall()
   }
 
-
-
-
   async displayToastInstall(platform = null) {
     // Detects if device is on iOS 
     const isIos = () => {

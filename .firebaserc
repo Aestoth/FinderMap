@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "findermap-dc585"
+  },
+  "targets": {
+    "fir-firebase-a0dba": {
+      "hosting": {
+        "FinderMap": [
+          "fir-firebase-a0dba"
+        ]
+      }
+    }
   }
 }

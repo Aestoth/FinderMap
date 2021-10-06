@@ -4,6 +4,10 @@ import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
+import { Firestore, collectionData, collection, setDoc, doc, updateDoc, QueryConstraint, where, query, orderBy, sortedChanges } from '@angular/fire/firestore';
+import { first } from 'rxjs/operators';
+import { StorageService } from '@app/@services/storage/storage.service';
+import { FirebaseService } from '@app/@services/firebase/firebase.service';
 
 
 @Component({
@@ -13,44 +17,37 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class ListpoisComponent implements OnInit {
 
-  public allPoiFinder: any
   public pois: iPois[] = []
   public searchTerm: string = ''
 
-  @Input('Pois') allPois: iPois[] = this.pois
-  
   constructor(
-    private listPoisService: WayfinderService, 
+    private readonly wfService: WayfinderService, 
     private poisProvider: Provider,
-    private modalController: ModalController) {
-    this.allPoiFinder = this.listPoisService
-  }
+    private _firestore: Firestore,
+    private modalController: ModalController,
+    private storage: StorageService,
+    private _firebase: FirebaseService) {}
 
-  ngOnInit(): void {
-
+  async ngOnInit() {
+    this.storage.loadIcon()
+    const fbcol = collection(this._firestore, 'recherches');
+    const data = await collectionData(fbcol, {idField: 'firebaseId'}).pipe(first()).toPromise();
     if(this.poisProvider.mapReady === true) {
-      this.pois = this.getAllPois()
+      this.pois = this._firebase.aggregateData(this.wfService.getAllPois(), data as any)
+      console.log(this.pois[0]);
       return
     }
     this.poisProvider.on("wf.map.ready").subscribe(() => {
       this.poisProvider.mapReady = true;
-      this.pois = this.getAllPois()
+      this.pois = this._firebase.aggregateData(this.wfService.getAllPois(), data as any)
+      console.log(this.pois[0]);
     })
 
   }
 
-  getAllPois(): iPois[] {
-    let arr:iPois[] = []
-    let _pois = this.allPoiFinder.getPOIs();
-    Object.keys(_pois).forEach((key: string) => {
-      if(_pois[key].showInMenu) arr.push(_pois[key] as iPois)
-    })
-    console.log("arrPois", arr)
-    return arr
-  }
-
-  clickPath(poi: iPois) {
-   this.allPoiFinder.showPath(poi) 
+  viewPath(poi:iPois) {
+    this.wfService.clickPath(poi.node)
+    this._firebase.counterIncrement(poi)
   }
 
   async showModal(poi: iPois) {
@@ -68,4 +65,8 @@ export class ListpoisComponent implements OnInit {
     this.searchTerm = $event.detail.value
   }
 
+  
+    
 }
+
+

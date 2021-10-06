@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule.forChild([{ path: 'shops', component: ListGroupComponent }])
   ],
   exports: [
     ListGroupComponent

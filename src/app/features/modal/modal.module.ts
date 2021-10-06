@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal.component';
-
-
-
+import { IonicModule } from '@ionic/angular';
+import { SharedModule } from '@app/@shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +10,9 @@ import { ModalComponent } from './modal.component';
     ModalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule,
+    SharedModule
   ],
   exports: [ModalComponent]
 })

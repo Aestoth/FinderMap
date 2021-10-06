@@ -12,43 +12,24 @@ import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 })
 export class ListGroupComponent implements OnInit {
 
-  public poifinder: any
   public groups!: iPois[] 
-  public currentLanguage!: string
-  public item!: iPois[]
-
-  @Input('groupPois') poisGroups: iPois[] = this.groups
  
 
-  constructor(private listService: WayfinderService,private groupPOISProvider: Provider) {
-    this.poifinder = this.listService
-   }
+  constructor(
+    private readonly wfService: WayfinderService,
+    private groupPOISProvider: Provider) {}
 
   ngOnInit():void {
 
     if(this.groupPOISProvider.mapReady === true) {
-      this.groups = this.getGroupsPois()
+      this.groups = this.wfService.getGroupsPois()
       return
     }
     this.groupPOISProvider.on("wf.map.ready").subscribe(() => {
       this.groupPOISProvider.mapReady = true;
-      this.groups = this.getGroupsPois()
+      this.groups = this.wfService.getGroupsPois()
+      console.log("items", this.groups);
     })
-
-    this.groupPOISProvider.on("wf.poi.click").subscribe((poi: any) => {
-      this.poifinder.showPath(poi)
-    }) 
-  }
-
-  getGroupsPois(): iPois[] {
-    let arr:iPois[] = []
-    let _poisGroups = this.poifinder.getPOIGroups();
-    console.log("poisGroups", _poisGroups);
-    Object.keys(_poisGroups).forEach((key: string) => {
-      if(_poisGroups[key].showInMenu) arr.push(_poisGroups[key] as iPois)
-    })
-    console.log("arrGroup", arr)
-    return arr
   }
 
 }

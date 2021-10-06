@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar color="primary" class="ion-text-center">
-    <ion-title>Menu</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-segment (ionChange)="segmentChanged($event)">
   <ion-segment-button value="group">
     <ion-label>{{ rubriques }}</ion-label>
@@ -14,10 +8,10 @@
 </ion-segment>
 <div [ngSwitch]="true">
   <ng-container *ngSwitchCase="activatedSegment === 'group'">
-    <app-listgroup [groupPois]="currentList"></app-listgroup>
+    <app-listgroup></app-listgroup>
   </ng-container>
   <ng-container *ngSwitchCase="activatedSegment === 'all'">
-    <app-listpois [Pois]="currentList"></app-listpois>
+    <app-listpois></app-listpois>
   </ng-container>
   <ng-container *ngSwitchDefault> </ng-container>
 </div>

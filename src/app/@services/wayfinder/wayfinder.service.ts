@@ -1,28 +1,24 @@
 import { Injectable } from '@angular/core';
+import { iFloors } from '@app/@interfaces/floors';
 import { iPois } from '@app/@interfaces/pois';
 import { Provider } from '@app/@provider/eventprovider';
 
 
-
-
 declare let Wayfinder3D: any;
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class WayfinderService {
-  private wf: any;
+  public wf: any;
   public lang!: string
- 
- 
   
   constructor(private provider: Provider) {
 	  this.wf = new Wayfinder3D();
     this.wf.options.assetsLocation = '//static.3dwayfinder.com/shared';
     this.wf.apiLocation = '//api.3dwayfinder.com'
     this.wf.resize()
-	  console.log("wf", this.wf)
+    
 
     this.wf.cbOnDataLoaded = () => {
       this.provider.eventEmit('wf.data.loaded', []);
@@ -60,24 +56,55 @@ export class WayfinderService {
 			this.provider.eventEmit('wf.path.finished', path);
 		};
     
-    return this.wf;
   }
 
-  public setFloor(floor: []) {
-    this.wf.showFloor(floor)
+  getPOIs() {
+    return this.wf.getPOIs()
   }
 
-  public getLanguage() {
-    return this.wf.getLanguage();
-  };
+  clickPath(poi: iPois) {
+    this.wf.showPath(poi) 
+  }
 
-  public getTranslation(key: string, params: string) {
-    console.log("translation", this.wf.translator.get(key))
-    if(!params) {
-      return this.wf.translator.translator.get(key)
-    } else {
-      return this.wf.translator.get(key, params)
-    }
+  getPOIGroups() {
+    return this.wf.getPOIGroups()
+  }
+
+  getSortedFloors() {
+    return this.wf.building.getSortedFloors()
+  }
+
+  getGroupsPois(): iPois[] {
+    let arr:iPois[] = []
+    let _poisGroups = this.wf.getPOIGroups();
+    Object.keys(_poisGroups).forEach((key: string) => {
+      if(_poisGroups[key].showInMenu) arr.push(_poisGroups[key] as iPois)
+    })
+    return arr
+  }
+
+  getAllPois(): iPois[] {
+    let arr:iPois[] = []
+    let _pois = this.wf.getPOIs();
+    Object.keys(_pois).forEach((key: string) => {
+      if(_pois[key].showInMenu) arr.push(_pois[key] as iPois)
+    })
+    console.log("arrPois", arr)
+    return arr
+  }
+
+  onClick(floor: any){
+    this.wf.showFloor(floor);
+  }
+
+  getMapFloors(): iFloors[] {
+    let arr:iFloors[] = []
+    let _floors = this.wf.getSortedFloors();
+    Object.keys(_floors).forEach((key: string) => {
+      if(_floors[key]) arr.push(_floors[key] as iFloors)
+    })
+    console.log("arr", arr)
+    return arr
   }
 
 }

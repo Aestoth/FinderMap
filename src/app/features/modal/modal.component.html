@@ -11,15 +11,13 @@
 <ion-content color="light" class="ion-text-center">
   <ion-item>
     <ion-thumbnail>
-      <img src="{{ modalPoi.icon.currentSrc }}" />
+      <img [src]="modalPoi.icon.currentSrc" />
     </ion-thumbnail>
   </ion-item>
   <ion-item>
     <ion-text>
-      <p>{{ modalPoi.descriptions?.translations?.en }}</p>
+      <pre>{{ modalPoi.descriptions | json }}</pre>
     </ion-text>
   </ion-item>
 </ion-content>
-
-d0c090
 

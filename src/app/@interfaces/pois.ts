@@ -1,4 +1,5 @@
 export interface iPois {
+    id: string
     showInMenu: boolean
     names: {translations:{en:string}}
     floor?: string
@@ -6,6 +7,8 @@ export interface iPois {
     descriptions?: {translations:{en:string}}
     icon?: any
     currentSrc?: string
-    groups: []
-    pois: []
+    groups?: iPois[]
+    pois?: iPois[]
+    views?: number
+    firebaseId?: string
 }

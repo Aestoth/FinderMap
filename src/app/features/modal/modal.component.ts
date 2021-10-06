@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { iPois } from '@app/@interfaces/pois';
-import { ModalController } from '@ionic/angular';
+import { StorageService } from '@app/@services/storage/storage.service';
+import { IonItemSliding, ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -10,11 +11,15 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalComponent implements OnInit {
 
+  public icons!: any
+
+
   @Input() modalPoi!: iPois
 
-  constructor(private modal: ModalController) { }
+  constructor(private modal: ModalController, private iconStorage:StorageService ) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.icons = this.iconStorage.iconFile
   }
 
   dismiss() {
