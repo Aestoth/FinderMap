@@ -12,7 +12,8 @@ import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 })
 export class ListGroupComponent implements OnInit {
 
-  public groups!: iPois[] 
+  public groups!: iPois[]
+  public max: number = 15 
  
 
   constructor(
@@ -30,6 +31,13 @@ export class ListGroupComponent implements OnInit {
       this.groups = this.wfService.getGroupsPois()
       console.log("items", this.groups);
     })
+  }
+
+  loadData($event: any) {
+    if(this.groups.length  > this.max){
+      this.max +=10
+    }
+    $event.target.complete()
   }
 
 }

@@ -12,8 +12,7 @@ import { IonItemSliding, ModalController } from '@ionic/angular';
 export class ModalComponent implements OnInit {
 
   public icons!: any
-
-
+  
   @Input() modalPoi!: iPois
 
   constructor(private modal: ModalController, private iconStorage:StorageService ) { }

@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'tabs', loadChildren: () => import('./features/tabs/tabs.module').then(m => m.TabsModule)
+    path: 'layout', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
   },
   {
     path: '',
-    redirectTo: 'tabs',
+    redirectTo: 'layout',
     pathMatch: "full"
   },
 ];

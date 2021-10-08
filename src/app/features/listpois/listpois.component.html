@@ -2,7 +2,7 @@
   <app-search (ionChange)="searchFilter($event)"></app-search>
 </ion-header>
 <ion-list>
-  <ion-item *ngFor="let list of pois | poiSearch: searchTerm">
+  <ion-item *ngFor="let list of pois | poiSearch: searchTerm: (fbUser |async) |slice: 0:max; let i =index;trackBy:trackBy">
     <ion-label slot="start">
       <ion-text>
         <h4>{{ list.names.translations.en }}</h4>
@@ -17,3 +17,10 @@
     </ion-button>
   </ion-item>
 </ion-list>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

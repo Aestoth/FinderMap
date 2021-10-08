@@ -99,7 +99,7 @@ export class WayfinderService {
 
   getMapFloors(): iFloors[] {
     let arr:iFloors[] = []
-    let _floors = this.wf.getSortedFloors();
+    let _floors = this.wf.building.getSortedFloors();
     Object.keys(_floors).forEach((key: string) => {
       if(_floors[key]) arr.push(_floors[key] as iFloors)
     })

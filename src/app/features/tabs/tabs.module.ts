@@ -14,19 +14,19 @@ import { TabsComponent } from './tabs.component';
     IonicModule,
     RouterModule.forChild([{
       path: '', component: TabsComponent, 
-      children: [
-        {
-          path: 'layout', 
-          children: [
-            {
-              path: '', loadChildren: () => import('../../layout/layout.module').then(m => m.LayoutModule)
-            }
-          ]   
-        },
-        {
-          path: '', redirectTo: 'layout', pathMatch: 'full'
-        }
-      ]
+      // children: [
+      //   {
+      //     path: 'layout', 
+      //     children: [
+      //       {
+      //         path: '', loadChildren: () => import('../../layout/layout.module').then(m => m.LayoutModule)
+      //       }
+      //     ]   
+      //   },
+      //   {
+      //     path: '', redirectTo: 'layout', pathMatch: 'full'
+      //   }
+      // ]
   }])
   ],
   exports: [TabsComponent]

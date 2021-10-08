@@ -1,4 +1,4 @@
-<ion-accordion-group  *ngFor="let group of groups">
+<ion-accordion-group  *ngFor="let group of groups |slice: 0:max">
   <ion-accordion value="group">
     <ion-item slot="header">
       <ion-label>{{ group.names.translations.en }}</ion-label>
@@ -11,3 +11,10 @@
     </ion-list>
   </ion-accordion>
 </ion-accordion-group>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

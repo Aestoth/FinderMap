@@ -11,7 +11,7 @@
     <app-listgroup></app-listgroup>
   </ng-container>
   <ng-container *ngSwitchCase="activatedSegment === 'all'">
-    <app-listpois></app-listpois>
+    <app-listpois #listComponent></app-listpois>
   </ng-container>
   <ng-container *ngSwitchDefault> </ng-container>
 </div>
