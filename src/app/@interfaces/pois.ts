@@ -1,12 +1,11 @@
 export interface iPois {
     id: string
     showInMenu: boolean
-    names: {translations:{en:string}}
+    names: {translations:{en:string ; fr:string ; es:string}}
     floor?: string
     node?: any
-    descriptions?: {translations:{en:string}}
-    icon?: any
-    currentSrc?: string
+    descriptions?: {translations:{en:string ; fr:string ; es:string}}
+    icon?: {currentSrc?: string}
     groups?: iPois[]
     pois?: iPois[]
     views?: number

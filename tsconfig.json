@@ -14,6 +14,8 @@
       "@shared/": ["src/app/@shared/*"],
       "@provider": ["src/app/@provider*"],
       "@provider/": ["src/app/@provider/*"],
+      "directives": ["src/app/features/map/directives*"],
+      "directives/": ["src/app/features/map/directives/*"],
       "layout": ["src/app/layout*"],
       "layout/": ["src/app/layout/*"],
       "features": ["src/app/features*"],

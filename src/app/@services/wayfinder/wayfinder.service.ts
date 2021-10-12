@@ -28,10 +28,6 @@ export class WayfinderService {
 			this.provider.eventEmit('wf.poi.click', poi);
 		};
 
-		this.wf.cbOnLanguageChange = (language: string) => {
-			this.provider.eventEmit('wf.language.change', language);
-		};
-
 		this.wf.cbOnFloorChange = (floor: string) => {
 			this.provider.eventEmit('wf.floor.change', floor);
 		};
@@ -40,13 +36,10 @@ export class WayfinderService {
       this.provider.eventEmit("wf.resize")
     }
 
-		this.wf.cbOnBeforeFloorChange = (currentFloor: string, nextFloor: string, destinationFloor: string) => {
-			this.provider.eventEmit('wf.path.floor.change', {
-				current: currentFloor,
-				next: nextFloor,
-				destination: destinationFloor
-			});
-		};
+		// this.wf.cbOnBeforeFloorChange = (currentFloor: string, nextFloor: string, destinationFloor: string, node) => {
+		// 	this.provider.eventEmit('wf.path.floor.change', current: currentFloor, next: nextFloor, destination: destinationFloor
+		// 	);
+		// };
 
 		this.wf.cbOnMapReady = () => {
 			this.provider.eventEmit('wf.map.ready', []);
@@ -106,5 +99,11 @@ export class WayfinderService {
     console.log("arr", arr)
     return arr
   }
+
+  getLang() {
+    return this.wf.getLanguage()
+  }
+
+  
 
 }

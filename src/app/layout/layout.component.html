@@ -12,18 +12,18 @@
       <app-sidebar></app-sidebar>
     </ion-content>
   </ion-menu>
-  <div id="menu-content">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Map</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <app-map></app-map>
-    </ion-content>
-  </div>
+  <ion-router-outlet id="menu-content">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Map</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <app-map></app-map>
+      </ion-content>
+  </ion-router-outlet>
 </ion-split-pane>
 

@@ -1,12 +1,16 @@
 <ion-accordion-group  *ngFor="let group of groups |slice: 0:max">
   <ion-accordion value="group">
     <ion-item slot="header">
-      <ion-label>{{ group.names.translations.en }}</ion-label>
+      <ion-label>{{ group | translate : 'names' }}</ion-label>
     </ion-item>
 
     <ion-list slot="content">
       <ion-item *ngFor="let poi of group.pois">
-        <ion-label>{{poi.names.translations.en}}</ion-label>
+        <ion-label>{{poi | translate: 'names'}}</ion-label>
+        <ion-button fill="clear" slot="end" (click)="showPoiPath(poi)">
+          <ion-icon color="blue" slot="icon-only" name="location-outline"
+          ></ion-icon>
+        </ion-button>
       </ion-item>
     </ion-list>
   </ion-accordion>

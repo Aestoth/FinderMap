@@ -6,10 +6,9 @@ import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { first, map } from 'rxjs/operators';
-import { StorageService } from '@app/@services/storage/storage.service';
 import { FirebaseService } from '@app/@services/firebase/firebase.service';
-import { authState, User, Auth } from '@angular/fire/auth/'
-import { Observable, of } from 'rxjs';
+import { authState, Auth } from '@angular/fire/auth/'
+import { Observable} from 'rxjs';
 
 
 @Component({
@@ -31,7 +30,6 @@ export class ListpoisComponent implements OnInit {
     private readonly poisProvider: Provider,
     private readonly _firestore: Firestore,
     private readonly modalController: ModalController,
-    private readonly _storage: StorageService,
     private readonly _firebase: FirebaseService,
     private readonly _auth: Auth) {}
 
@@ -39,9 +37,6 @@ export class ListpoisComponent implements OnInit {
     
     this.fbUser =  authState(this._auth).pipe(map(user => user?.uid || undefined))
     console.log(this.fbUser);
-    
-    
-    this._storage.loadIcon()
     
     const fbcol = collection(this._firestore, 'recherches');
     if(this.fbUser) {
@@ -68,7 +63,7 @@ export class ListpoisComponent implements OnInit {
 
   }
 
-  async viewPath(poi:iPois) {
+  async showPoiPath(poi:iPois) {
     this._wfService.clickPath(poi.node)
     const fbUser = await this.fbUser?.pipe(first()).toPromise()
     if(fbUser) {

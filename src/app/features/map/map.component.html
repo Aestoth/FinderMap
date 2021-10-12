@@ -1,12 +1,8 @@
 <div id="mapContainer">
   <canvas id="map"></canvas>
   <div id="floors-menu">
-    <button
-      *ngFor="let floor of floors"
-      class="floor-button"
-      (click)="floorClick()"
-    >
-      {{ floor.names.translations.en }}
+    <button *ngFor="let floor of floors" class="floor-button" (click)="floorClick()">
+      {{ floor | translate : 'names' }}
     </button>
   </div>
 </div>

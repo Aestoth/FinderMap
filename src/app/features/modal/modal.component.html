@@ -11,7 +11,7 @@
 <ion-content color="light" class="ion-text-center">
   <ion-item>
     <ion-thumbnail>
-      <img [src]="modalPoi.icon.currentSrc" />
+      <img [src]="modalPoi | icon : icons | async" />
     </ion-thumbnail>
   </ion-item>
   <ion-item>

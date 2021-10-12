@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ListGroupComponent } from './listgroup.component';
-import { RouterModule } from '@angular/router';
+import { SharedModule } from '@app/@shared/shared.module';
 
 
 
@@ -13,9 +13,13 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     IonicModule,
+    SharedModule
   ],
   exports: [
     ListGroupComponent
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class ListGroupModule { }

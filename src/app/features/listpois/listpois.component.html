@@ -3,15 +3,15 @@
 </ion-header>
 <ion-list>
   <ion-item *ngFor="let list of pois | poiSearch: searchTerm: (fbUser |async) |slice: 0:max; let i =index;trackBy:trackBy">
-    <ion-label slot="start">
+    <ion-label class="ion-text-wrap">
       <ion-text>
-        <h4>{{ list.names.translations.en }}</h4>
+        <h4>{{ list | translate: 'names' }}</h4>
       </ion-text>
     </ion-label>
-    <ion-button *ngIf="list.descriptions?.translations?.en" fill="clear" slot="end" (click)="showModal(list)">
+    <ion-button *ngIf="list | translate: 'descriptions'" fill="clear" slot="end" (click)="showModal(list)">
       <ion-icon color="blue" name="information-circle-outline"></ion-icon>
     </ion-button>
-    <ion-button fill="clear" slot="end" (click)="viewPath(list)">
+    <ion-button fill="clear" slot="end" (click)="showPoiPath(list)">
       <ion-icon color="blue" slot="icon-only" name="location-outline"
       ></ion-icon>
     </ion-button>
