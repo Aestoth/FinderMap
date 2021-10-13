@@ -69,7 +69,7 @@ export class FirebaseService {
 
   async getData(user?: User) {
     //get pois
-    const pois = this._wfService.getAllPois()
+    const pois = this._wfService.getPoisList()
     // if user is connected load data aggregation from firebase
     if(user?.uid) {
       const fbCol = collection(this._firestore, 'recherches');

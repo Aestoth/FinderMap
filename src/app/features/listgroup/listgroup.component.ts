@@ -28,7 +28,7 @@ export class ListGroupComponent implements OnInit {
       this.groups = this._wfService.getGroupsPois()
       return
     }
-    this.groupPOISProvider.on("wf.map.ready").subscribe(() => {
+    this._wfService.wf.events.on("data-loaded",() => {
       this.groupPOISProvider.mapReady = true;
       this.groups = this._wfService.getGroupsPois()
       console.log("items", this.groups);

@@ -41,23 +41,16 @@ export class ListpoisComponent implements OnInit {
     const fbcol = collection(this._firestore, 'recherches');
     if(this.fbUser) {
       this.data = await collectionData(fbcol, {idField: 'firebaseId'}).pipe(first()).toPromise();
-      this.pois = this._firebase.aggregateData(this._wfService.getAllPois(), this.data as any)
+      this.pois = this._firebase.aggregateData(this._wfService.getPoisList(), this.data as any)
 
-      this.poisProvider.on("wf.map.ready").subscribe(() => {
-        this.poisProvider.mapReady = true;
-        this.pois = this._firebase.aggregateData(this._wfService.getAllPois(), this.data as any)
+      this._wfService.wf.events.on("data-loaded", () => {
+        this.pois = this._firebase.aggregateData(this._wfService.getPoisList(), this.data as any)
         console.log('poiList',this.pois[0]);
       })
     } else {
-      if(this.poisProvider.mapReady === true) {
-        this.pois = this._wfService.getAllPois()
-        console.log('poiList',this.pois[0]);
-        return
-      }
-      this.poisProvider.on("wf.map.ready").subscribe(() => {
-        this.poisProvider.mapReady = true;
-        this.pois = this._wfService.getAllPois()
-        console.log('poiList',this.pois[0]);
+      this._wfService.wf.events.on("data-loaded", () => {
+        this.pois = this._wfService.getPoisList()
+        console.log('withoutUser',this.pois[0]);
       })
     }
 

@@ -11,7 +11,6 @@ declare let Wayfinder3D: any;
 })
 export class WayfinderService {
   public wf: any;
-  public lang!: string
   
   constructor(private provider: Provider) {
 	  this.wf = new Wayfinder3D();
@@ -20,47 +19,35 @@ export class WayfinderService {
     this.wf.resize()
     
 
-    this.wf.cbOnDataLoaded = () => {
-      this.provider.eventEmit('wf.data.loaded', []);
-    };
+    // this.wf.cbOnDataLoaded = () => {
+    //   this.provider.eventEmit('wf.data.loaded', []);
+    // };
 
-    this.wf.cbOnPOIClick = (poi: iPois) => {
-			this.provider.eventEmit('wf.poi.click', poi);
-		};
-
-		this.wf.cbOnFloorChange = (floor: string) => {
-			this.provider.eventEmit('wf.floor.change', floor);
-		};
-
-    this.wf.cbResize = () => {
-      this.provider.eventEmit("wf.resize")
-    }
-
-		// this.wf.cbOnBeforeFloorChange = (currentFloor: string, nextFloor: string, destinationFloor: string, node) => {
-		// 	this.provider.eventEmit('wf.path.floor.change', current: currentFloor, next: nextFloor, destination: destinationFloor
-		// 	);
+    // this.wf.cbOnPOIClick = (poi: iPois) => {
+		// 	this.wf.events.on('wf.poi.click', poi);
 		// };
 
-		this.wf.cbOnMapReady = () => {
-			this.provider.eventEmit('wf.map.ready', []);
-		};
+		// this.wf.cbOnFloorChange = (floor: string) => {
+		// 	this.provider.eventEmit('wf.floor.change', floor);
+		// };
 
-		this.wf.cbOnPathFinished = (path: string) => {
-			this.provider.eventEmit('wf.path.finished', path);
-		};
+    // this.wf.cbResize = () => {
+    //   this.provider.eventEmit("wf.resize")
+    // }
+
+
+		// this.wf.cbOnMapReady = () => {
+		// 	this.provider.eventEmit('wf.map.ready', []);
+		// };
+
+		// this.wf.cbOnPathFinished = (path: string) => {
+		// 	this.provider.eventEmit('wf.path.finished', path);
+		// };
     
-  }
-
-  getPOIs() {
-    return this.wf.getPOIs()
   }
 
   clickPath(poi: iPois) {
     this.wf.showPath(poi) 
-  }
-
-  getPOIGroups() {
-    return this.wf.getPOIGroups()
   }
 
   getSortedFloors() {
@@ -76,14 +63,18 @@ export class WayfinderService {
     return arr
   }
 
-  getAllPois(): iPois[] {
-    let arr:iPois[] = []
-    let _pois = this.wf.getPOIs();
-    Object.keys(_pois).forEach((key: string) => {
-      if(_pois[key].showInMenu) arr.push(_pois[key] as iPois)
-    })
-    console.log("arrPois", arr)
-    return arr
+  // getAllPois(): iPois[] {
+  //   let arr:iPois[] = []
+  //   let _pois = this.wf.getPOIs();
+  //   Object.keys(_pois).forEach((key: string) => {
+  //     if(_pois[key].showInMenu) arr.push(_pois[key] as iPois)
+  //   })
+  //   console.log("arrPois", arr)
+  //   return arr
+  // }
+
+  getPoisList() {
+    return this.wf.getPOIsArray()
   }
 
   onClick(floor: any){
