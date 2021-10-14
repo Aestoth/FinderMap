@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { authState, User, Auth, signInWithPopup, GoogleAuthProvider, signOut } from '@angular/fire/auth/'
 import { iPois } from '@app/@interfaces/pois';
 import { FirebaseService } from '@app/@services/firebase/firebase.service';
@@ -6,7 +6,6 @@ import { StorageService } from '@app/@services/storage/storage.service';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 import { Observable, of } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-layout',

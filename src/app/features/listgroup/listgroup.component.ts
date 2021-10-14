@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class ListGroupComponent implements OnInit {
 
   public groups!: iPois[]
-  public max: number = 15
+  public max: number = 17
   public fbUser!: Observable<string | undefined> | undefined; 
  
 

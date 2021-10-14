@@ -4,13 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'layout', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
-  },
-  {
     path: '',
-    redirectTo: 'layout',
+    redirectTo: 'welcome',
     pathMatch: "full"
   },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./features/welcome/welcome.module').then( m => m.WelcomeModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./features/home/home.module').then( m => m.HomeModule)
+  },
+  {
+    path: 'layout',
+    loadChildren: () => import('./features/layout/layout.module').then( m => m.LayoutModule)
+  }
+
 ];
 
 @NgModule({

@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="welcome" color="white"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-row class="logo">
+    <ion-col>
+      <ion-img src="assets/svg/shop.svg"></ion-img>
+    <ion-label>
+      <p class="ion-text-left logolabel"> Enjoy</p>
+    </ion-label>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>
+
+<ion-footer>
+    <ion-list>
+      <ion-list-header class="ion-margin">
+        <ion-label>
+          New
+          <p><ion-text color="dark">Account</ion-text></p>
+        </ion-label>
+      </ion-list-header>
+  
+      <ion-item-group class="ion-margin-horizontal">
+        
+          <div class="ion-margin-vertical">
+            <ion-card routerLink="/layout">
+                <ion-card-header>
+                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                  <ion-card-title>Card Title</ion-card-title>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  Keep close to Nature's heart... and break clear away, once in awhile,
+                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                </ion-card-content>
+              </ion-card>
+          </div>
+      </ion-item-group>
+  
+    </ion-list>
+  </ion-footer>

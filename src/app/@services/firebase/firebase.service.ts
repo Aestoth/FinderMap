@@ -4,7 +4,7 @@ import { User,} from '@angular/fire/auth/'
 import { iPois } from '@app/@interfaces/pois';
 import { Observable } from 'rxjs';
 import { WayfinderService } from '../wayfinder/wayfinder.service';
-import { findIndex, first } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 
 @Injectable({
