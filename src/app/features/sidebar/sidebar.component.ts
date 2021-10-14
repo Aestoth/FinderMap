@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { User} from '@angular/fire/auth/'
+import { iPois } from '@app/@interfaces/pois';
 import { Observable, of } from 'rxjs';
 
 @Component({

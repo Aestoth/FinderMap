@@ -6,7 +6,8 @@
   margin-left: auto;
   margin-right: auto;
   .floor-button {
-    width: 3em;
+    width: 2.5rem;
+    height: 2.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
     text-transform: uppercase;
@@ -15,6 +16,8 @@
     display: block;
     white-space: break;
     word-wrap: break-word;
+    margin-bottom: 0.5rem;
+    font-size: 20px;
   }
   .floor-button {
     box-shadow: 0 0 8px;

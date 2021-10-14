@@ -5,3 +5,9 @@
 .logo {
     margin: 1vh 0 0 5vh;
 }
+
+.my-custom-class{
+    --background: var(--ion-color-primary);
+    --color:var(--ion-color-white)
+  }
+  

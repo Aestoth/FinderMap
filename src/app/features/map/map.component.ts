@@ -18,8 +18,10 @@ export class MapComponent implements AfterViewInit {
     private readonly _wfService: WayfinderService,
     private _toastController: ToastController) {}
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     this._wfService.wf.open("2eebb99f3154c041f23acd836ccad09b")
+    console.log('coucou', this._wfService.wf.events);
+    
     this._wfService.wf.events.on("data-loaded", () => {
       this.floors = this._wfService.wf.building.getSortedFloors()
     })
@@ -35,7 +37,8 @@ export class MapComponent implements AfterViewInit {
 
   async displayToast(text: string){
     const toast = await this._toastController.create({
-      message: text
+      message: text,
+      cssClass:"my-custom-class"
     })
     await toast.present()
   }

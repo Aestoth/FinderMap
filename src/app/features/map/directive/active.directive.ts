@@ -17,19 +17,16 @@ export class ActiveDirective implements OnInit, OnChanges {
  }
 
  ngOnChanges(changes: SimpleChanges) {
-   console.log('changes', changes);
-   
   this.toggleColor()
-  
  }
 
  toggleColor() {
   let el = this.element.nativeElement;
   if(!el) return
   if(this.appActive){
-     this.renderer.setStyle(el, 'background', 'blue');
+     this.renderer.setStyle(el, 'background', '#ff7051');
    } else {
-     this.renderer.setStyle(el, 'background', 'gray');
+     this.renderer.setStyle(el, 'background', '#ffffff');
    }
  }
 

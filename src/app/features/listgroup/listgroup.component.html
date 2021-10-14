@@ -1,7 +1,7 @@
-<ion-accordion-group  *ngFor="let group of groups |slice: 0:max">
-  <ion-accordion value="group">
+<ion-accordion-group *ngFor="let group of groups">
+  <ion-accordion value="group" >
     <ion-item slot="header">
-      <ion-label>{{ group | translate : 'names' }}</ion-label>
+      <ion-label>{{ group | translate: 'names' }}</ion-label>
     </ion-item>
 
     <ion-list slot="content">

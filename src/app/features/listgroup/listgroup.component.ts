@@ -13,26 +13,25 @@ import { Observable } from 'rxjs';
 })
 export class ListGroupComponent implements OnInit {
 
-  public groups!: iPois[]
+  public groups: iPois[] = []
   public max: number = 17
-  public fbUser!: Observable<string | undefined> | undefined; 
+  public tableau!: any[] 
  
 
   constructor(
-    private readonly _wfService: WayfinderService,
-    private groupPOISProvider: Provider) {}
+    private readonly _wfService: WayfinderService) {}
 
   ngOnInit():void {
-
-    if(this.groupPOISProvider.mapReady === true) {
-      this.groups = this._wfService.getGroupsPois()
+    if(this._wfService.dataLoaded === true) {
+      this.groups = this._wfService.getGroupsPois().map(g =>({...g}))
       return
     }
-    this._wfService.wf.events.on("data-loaded",() => {
-      this.groupPOISProvider.mapReady = true;
-      this.groups = this._wfService.getGroupsPois()
-      console.log("items", this.groups);
+    this._wfService.wf.events.on("data-loaded", () => {
+      this.groups = this._wfService.getGroupsPois().map(g =>({...g}))
+      this._wfService.dataLoaded = true
+      console.log('groups', this.groups); 
     })
+    
   }
 
   loadData($event: any) {

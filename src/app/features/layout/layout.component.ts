@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { authState, User, Auth, signInWithPopup, GoogleAuthProvider, signOut } from '@angular/fire/auth/'
 import { iPois } from '@app/@interfaces/pois';
 import { FirebaseService } from '@app/@services/firebase/firebase.service';
@@ -12,10 +12,11 @@ import { first, map } from 'rxjs/operators';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent {
+export class LayoutComponent implements AfterViewInit {
 
   public user$: Observable<User | any> = of({})
   public pois: iPois[] = []
+  public wf: any
   
   
   constructor(
@@ -32,6 +33,11 @@ export class LayoutComponent {
           return {}
         })
       )
+    }
+
+    async ngAfterViewInit() {
+      await this._wfService.init()
+      this.wf = this._wfService.wf
     }
 
     async ionViewWillEnter() {

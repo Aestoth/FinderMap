@@ -27,16 +27,16 @@ export class ListpoisComponent implements OnInit {
 
   constructor(
     private readonly _wfService: WayfinderService, 
-    private readonly poisProvider: Provider,
     private readonly _firestore: Firestore,
     private readonly modalController: ModalController,
     private readonly _firebase: FirebaseService,
     private readonly _auth: Auth) {}
 
   async ngOnInit() {
+
+    
     
     this.fbUser =  authState(this._auth).pipe(map(user => user?.uid || undefined))
-    console.log(this.fbUser);
     
     const fbcol = collection(this._firestore, 'recherches');
     if(this.fbUser) {
@@ -49,8 +49,8 @@ export class ListpoisComponent implements OnInit {
       })
     } else {
       this._wfService.wf.events.on("data-loaded", () => {
-        this.pois = this._wfService.getPoisList()
-        console.log('withoutUser',this.pois[0]);
+        this.pois = this._wfService.getPoisList();
+        
       })
     }
 
