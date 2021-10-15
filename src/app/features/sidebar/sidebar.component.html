@@ -1,4 +1,4 @@
-<ion-segment (ionChange)="segmentChanged($event)">
+<ion-segment (ionChange)="segmentChanged($event)" [value]="activatedSegment">
   <ion-segment-button value="group">
     <ion-label>{{ rubriques }}</ion-label>
   </ion-segment-button>

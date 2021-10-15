@@ -13,7 +13,6 @@ export class ActiveDirective implements OnInit, OnChanges {
  }
 
  ngOnInit(): void {
-  
  }
 
  ngOnChanges(changes: SimpleChanges) {

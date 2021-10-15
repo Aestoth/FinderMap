@@ -38,6 +38,7 @@ export class MapComponent implements AfterViewInit {
   async displayToast(text: string){
     const toast = await this._toastController.create({
       message: text,
+      duration: 5000,
       cssClass:"my-custom-class"
     })
     await toast.present()

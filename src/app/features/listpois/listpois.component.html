@@ -1,13 +1,13 @@
-<ion-header>
+<ion-toolbar>
   <app-search (ionChange)="searchFilter($event)"></app-search>
-</ion-header>
+</ion-toolbar>
 <ion-list>
-  <ion-item *ngFor="let list of pois | poiSearch: searchTerm: (fbUser |async) |slice: 0:max; let i =index;trackBy:trackBy">
+  <ion-item *ngFor="let list of pois | poiSearch: searchTerm: (fbUser | async) |slice: 0:max; let i =index;trackBy:trackBy">
     <ion-label class="ion-text-wrap">
       <ion-text>
         {{ list | translate: 'names' }}
       </ion-text>
-      <ion-text *ngFor="let group of list.groups">
+      <ion-text color="primary" *ngFor="let group of list.groups">
         <h4>{{group | translate: 'names'}}</h4>
       </ion-text>
     </ion-label>

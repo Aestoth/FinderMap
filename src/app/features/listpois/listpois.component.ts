@@ -21,6 +21,7 @@ export class ListpoisComponent implements OnInit {
   public data: any[] = []
   public searchTerm: string = ''
   public fbUser!: Observable<string | undefined> | undefined;
+  public user!: string | undefined
   public max: number = 15
   
 
@@ -32,31 +33,20 @@ export class ListpoisComponent implements OnInit {
     private readonly _auth: Auth) {}
 
   async ngOnInit() {
-     
-     
-    
-    console.log('poi', this.pois);
-
-    if(this._wfService.dataLoaded === true) {
-      this.pois = this._wfService.getPoisList()
-      return
-    }
 
     this.fbUser =  authState(this._auth).pipe(map(user => user?.uid || undefined))
-    
     const fbcol = collection(this._firestore, 'recherches');
+    
     if(this.fbUser) {
       this.data = await collectionData(fbcol, {idField: 'firebaseId'}).pipe(first()).toPromise();
       this.pois = this._firebase.aggregateData(this._wfService.getPoisList(), this.data as any)
-
+      
       this._wfService.wf.events.on("data-loaded", () => {
         this.pois = this._firebase.aggregateData(this._wfService.getPoisList(), this.data as any)
-        console.log('poiList',this.pois[0]);
       })
     } else {
       this._wfService.wf.events.on("data-loaded", () => {
         this.pois = this._wfService.getPoisList();
-        this._wfService.dataLoaded = true
       })
     }
 
