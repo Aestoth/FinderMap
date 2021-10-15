@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout.component';
 import { IonicModule } from '@ionic/angular';
 import { MapModule } from '../map/map.module';
 import { SidebarModule } from '../sidebar/sidebar.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SidebarModule } from '../sidebar/sidebar.module';
     IonicModule,
     MapModule,
     SidebarModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    RouterModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

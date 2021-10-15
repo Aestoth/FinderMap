@@ -13,6 +13,10 @@ export class WayfinderService {
   public dataLoaded = false  
   constructor() {}
 
+
+  /**
+   * Initialize a promise of new Wayfinder instance
+   */
   async init() {
     await new Promise((resolve, reject)=> {
       setTimeout(()=> {
@@ -26,16 +30,32 @@ export class WayfinderService {
     }) 
   }
 
-  
 
-  clickPath(poi: iPois) {
+  /**
+  * Get list of POIs
+  * 
+  * @returns list of POIs
+  */
+  getPoisList() {
+    return this.wf.getPOIsArray();
+  }
+
+
+  /**
+   * Show path to the given node
+   * 
+   * @param poi target the POI
+   */
+   clickPath(poi: iPois) {
     this.wf.showPath(poi) 
   }
 
-  getSortedFloors() {
-    return this.wf.building.getSortedFloors()
-  }
 
+  /**
+   * Get groups of POI
+   * 
+   * @returns list of POI groups
+   */
   getGroupsPois(): iPois[] {
     let arr:iPois[] = []
     let _poisGroups = this.wf.getPOIGroups();
@@ -45,24 +65,22 @@ export class WayfinderService {
     return arr
   }
 
-  getPoisList() {
-    return this.wf.getPOIsArray()
-  }
 
-  onClick(floor: any){
+  /**
+   * Show selected floor
+   * 
+   * @param floor target floor
+   */
+   onClick(floor: any){
     this.wf.showFloor(floor);
   }
 
-  getMapFloors(): iFloors[] {
-    let arr:iFloors[] = []
-    let _floors = this.wf.building.getSortedFloors();
-    Object.keys(_floors).forEach((key: string) => {
-      if(_floors[key]) arr.push(_floors[key] as iFloors)
-    })
-    console.log("arr", arr)
-    return arr
-  }
 
+  /**
+   * Get current Language
+   * 
+   * @returns current Languague
+   */
   getLang() {
     return this.wf.getLanguage()
   }

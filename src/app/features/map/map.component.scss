@@ -1,32 +1,35 @@
 #floors-menu {
   position: absolute;
-  top: 0.5em;
+  top: 1em;
   min-width: 3rem;
-  left: 0.5em;
+  left: 1em;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .floor-button {
-    width: 2.5rem;
-    height: 2.5rem;
+    float: right;
+    width: 4em;
+    height: 3em;
     text-overflow: ellipsis;
     overflow: hidden;
     text-transform: uppercase;
     padding: 0.25rem 0.25em;
     text-align: center;
     display: block;
-    white-space: break;
+    white-space: nowrap;
     word-wrap: break-word;
-    margin-bottom: 0.5rem;
-    font-size: 20px;
-  }
-  .floor-button {
     box-shadow: 0 0 8px;
+    margin-bottom: 0.1em;
     &:first-child {
       border-radius: 3px 3px 0 0;
     }
     &:last-child {
       border-radius: 0 0 3px 3px;
     }
+  
   }
 }
 

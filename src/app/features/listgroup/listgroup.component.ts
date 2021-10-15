@@ -1,9 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { iPois } from '@app/@interfaces/pois';
-import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
-import { Observable } from 'rxjs';
-
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
 
 
 @Component({
@@ -19,7 +18,9 @@ export class ListGroupComponent implements OnInit {
  
 
   constructor(
-    private readonly _wfService: WayfinderService) {}
+    private readonly _wfService: WayfinderService,
+    private readonly _modalController: ModalController
+    ) {}
 
   ngOnInit():void {
     if(this._wfService.dataLoaded === true) {
@@ -43,6 +44,17 @@ export class ListGroupComponent implements OnInit {
 
   async showPoiPath(poi:iPois) {
     this._wfService.clickPath(poi.node)
+  }
+
+  async showModal(poi: iPois) {
+    const poimodal = await this._modalController.create({
+      component: ModalComponent,
+      componentProps: {
+        modalPoi: poi
+      },
+      cssClass: 'custom-class'
+    })
+    await poimodal.present();
   }
 
 }

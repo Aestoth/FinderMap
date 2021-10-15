@@ -6,8 +6,8 @@
           <ion-buttons slot="start">
             <ion-back-button defaultHref="home"></ion-back-button>
           </ion-buttons>
-          <ion-button slot="end" *ngIf="user$|async as user" (click)="user?.uid ? logout() : login()">
-            <ion-icon color="light" [name]="user?.uid ? 'log-out' : 'log-in'"></ion-icon>
+          <ion-button slot="end" *ngIf="user$|async as user" (click)="user?.uid ? logout() : redirect()">
+            <ion-icon color="light" [name]="user?.uid ? 'log-out-outline' : 'log-in-outline'"></ion-icon>
           </ion-button>
         </ion-toolbar>
       </ion-header>
@@ -18,10 +18,12 @@
     <ion-router-outlet id="menu-content">
         <ion-header>
           <ion-toolbar color="primary">
-            <ion-buttons slot="start">
-              <ion-menu-button></ion-menu-button>
+            <ion-menu-button></ion-menu-button>
+            <ion-title>LOGO</ion-title>
+            <ion-buttons slot="end">
+              <ion-icon slot="end" name="chatbox-outline"></ion-icon><ion-label>Chat with Us</ion-label>
+              <ion-icon slot="end" name="chevron-down-outline"></ion-icon><ion-label>English</ion-label>
             </ion-buttons>
-            <ion-title>Map</ion-title>
           </ion-toolbar>
         </ion-header>
         <ion-content>

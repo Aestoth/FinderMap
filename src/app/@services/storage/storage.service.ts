@@ -8,16 +8,18 @@ export class StorageService {
 
   iconFile: {items: ListResult} | undefined
 
-  constructor(private _storage: Storage) { }
+  constructor(private _storage: Storage) {}
 
+  /**
+   * List of Icons provided from firebase storage
+   */
   async loadIcon() {
     const fbRef = ref(this._storage)
     const result= await listAll(fbRef)
     this.iconFile = {
       items: result 
     }
-    console.log(this.iconFile);
-    
+    console.log(this.iconFile);  
   }
   
 }

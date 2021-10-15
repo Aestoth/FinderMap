@@ -8,6 +8,13 @@ import { getDownloadURL, StorageReference } from '@angular/fire/storage';
 export class IconPipe implements PipeTransform {
 
 
+  /**
+   * Get the POI icon for modal info
+   * 
+   * @param poi target the POI
+   * @param icons target the icons in firebase storage
+   * @returns icons of POI or icons from firebase storage if POI icons doesn't exist
+   */
   async transform(poi: iPois, icons: StorageReference[]): Promise<string | null>  {
     
     const iconName = icons.find(i => i.name.includes(poi.names.translations.en.toLowerCase()))

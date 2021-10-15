@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
-import { Provider } from './@provider/eventprovider';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -13,8 +12,6 @@ import {  provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage} from '@angular/fire/storage';
-
-
 
 
 
@@ -43,7 +40,7 @@ import { provideStorage, getStorage} from '@angular/fire/storage';
     // import to configure firebase storage
     provideStorage(() => getStorage())
   ],
-  providers: [Provider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

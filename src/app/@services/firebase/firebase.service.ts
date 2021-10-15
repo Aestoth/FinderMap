@@ -20,6 +20,14 @@ export class FirebaseService {
     private _wfService: WayfinderService
     ) {}
 
+
+  /**
+   * Create an aggreation of data
+   * 
+   * @param a target array of POIs
+   * @param b target array object from firebase
+   * @returns the data aggregation
+   */
   aggregateData(a: iPois[], b: {word: string, views: number, firebaseId: string}[]) {
     const result = [];
     for (let index = 0; index < a.length; index++) {
@@ -31,6 +39,12 @@ export class FirebaseService {
     return result;
   }
 
+  /**
+   * Increment the count of views of a POI if user is connected
+   * 
+   * @param poi target the POI
+   * @param uid target the User uid
+   */
   async counterIncrement(poi: iPois, uid?: string) {
     const index = this.pois.findIndex(p => p.id === poi.id)
     const poisToUpdate = this.pois[index]
@@ -67,6 +81,11 @@ export class FirebaseService {
     console.log('poiIndex', this.pois[index]);
   }
 
+  /**
+   * Return data if no user or aggregation data if user
+   * 
+   * @param user optional parameter of the user if it exists
+   */
   async getData(user?: User) {
     //get pois
     const pois = this._wfService.getPoisList()

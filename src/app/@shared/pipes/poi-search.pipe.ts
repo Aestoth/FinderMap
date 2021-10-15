@@ -5,6 +5,15 @@ import { iPois } from '@app/@interfaces/pois';
   name: 'poiSearch',
 })
 export class poiSearchPipe implements PipeTransform {
+
+  /**
+   * Search for a poi based on the user's input
+   * 
+   * @param pois target the POIs
+   * @param term target the search word
+   * @param uid target user uid if exist
+   * @returns returns the result of the search sorted by alphabetical order or sorted by number of views if a user is logged in
+   */
   transform(
     pois: iPois[] | null,
     term: string = '',
@@ -12,7 +21,7 @@ export class poiSearchPipe implements PipeTransform {
   ): iPois[] | null {
     if (pois != null) {
       const filtered = pois.filter((poi) => {
-        const name = poi.names.translations.en.toLowerCase();
+      const name = poi.names.translations.en.toLowerCase();
         return name.startsWith(term.toLowerCase());
       });
       if (uid && term.length > 0) {

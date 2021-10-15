@@ -5,7 +5,10 @@
   <ion-item *ngFor="let list of pois | poiSearch: searchTerm: (fbUser |async) |slice: 0:max; let i =index;trackBy:trackBy">
     <ion-label class="ion-text-wrap">
       <ion-text>
-        <h4>{{ list | translate: 'names' }}</h4>
+        {{ list | translate: 'names' }}
+      </ion-text>
+      <ion-text *ngFor="let group of list.groups">
+        <h4>{{group | translate: 'names'}}</h4>
       </ion-text>
     </ion-label>
     <ion-button *ngIf="list | translate: 'descriptions'" fill="clear" slot="end" (click)="showModal(list)">

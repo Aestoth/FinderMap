@@ -4,6 +4,9 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="welcome" color="white"></ion-back-button>
       </ion-buttons>
+      <ion-button slot="end" *ngIf="user$|async as user" (click)="user?.uid ? logout() : login()">
+        <ion-icon color="dark" [name]="user?.uid ? 'log-out-outline' : 'log-in-outline'"></ion-icon>
+      </ion-button>
     </ion-toolbar>
   </ion-header>
 

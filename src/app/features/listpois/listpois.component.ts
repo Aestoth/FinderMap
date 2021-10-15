@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { iPois } from '@app/@interfaces/pois';
-import { Provider } from '@app/@provider/eventprovider';
 import { WayfinderService } from '@app/@services/wayfinder/wayfinder.service';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
@@ -28,14 +27,21 @@ export class ListpoisComponent implements OnInit {
   constructor(
     private readonly _wfService: WayfinderService, 
     private readonly _firestore: Firestore,
-    private readonly modalController: ModalController,
+    private readonly _modalController: ModalController,
     private readonly _firebase: FirebaseService,
     private readonly _auth: Auth) {}
 
   async ngOnInit() {
+     
+     
+    
+    console.log('poi', this.pois);
 
-    
-    
+    if(this._wfService.dataLoaded === true) {
+      this.pois = this._wfService.getPoisList()
+      return
+    }
+
     this.fbUser =  authState(this._auth).pipe(map(user => user?.uid || undefined))
     
     const fbcol = collection(this._firestore, 'recherches');
@@ -50,7 +56,7 @@ export class ListpoisComponent implements OnInit {
     } else {
       this._wfService.wf.events.on("data-loaded", () => {
         this.pois = this._wfService.getPoisList();
-        
+        this._wfService.dataLoaded = true
       })
     }
 
@@ -65,7 +71,7 @@ export class ListpoisComponent implements OnInit {
   }
 
   async showModal(poi: iPois) {
-    const poimodal = await this.modalController.create({
+    const poimodal = await this._modalController.create({
       component: ModalComponent,
       componentProps: {
         modalPoi: poi

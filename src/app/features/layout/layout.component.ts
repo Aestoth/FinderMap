@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { authState, User, Auth, signInWithPopup, GoogleAuthProvider, signOut } from '@angular/fire/auth/'
+import { Router } from '@angular/router';
 import { iPois } from '@app/@interfaces/pois';
 import { FirebaseService } from '@app/@services/firebase/firebase.service';
 import { StorageService } from '@app/@services/storage/storage.service';
@@ -23,7 +24,8 @@ export class LayoutComponent implements AfterViewInit {
     private readonly _auth: Auth, 
     private readonly _firebase: FirebaseService,
     private readonly _storageService: StorageService,
-    private readonly _wfService: WayfinderService
+    private readonly _wfService: WayfinderService,
+    private router: Router
     ) {
       this.user$ = authState(this._auth).pipe(
         map((user: User|null) => {
@@ -48,9 +50,8 @@ export class LayoutComponent implements AfterViewInit {
       this._storageService.loadIcon()
     }
 
-    async login() {
-      const {user}= await signInWithPopup(this._auth, new GoogleAuthProvider)
-      this._firebase.getData(user)
+    redirect() {
+      this.router.navigateByUrl('home')
     }
 
     logout() {
