@@ -7,6 +7,7 @@ import { WayfinderService } from '../wayfinder/wayfinder.service';
 import { first } from 'rxjs/operators';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class FirebaseService {
 
   public data$: Observable<any[]> | undefined
   public pois: iPois[] = []
+  public stores$: Observable<any[]> | undefined
 
   constructor(
     private _firestore: Firestore,
@@ -28,12 +30,12 @@ export class FirebaseService {
    * @param b target array object from firebase
    * @returns the data aggregation
    */
-  aggregateData(a: iPois[], b: {word: string, views: number, firebaseId: string}[]) {
+  aggregateData(a: iPois[], b: {word: string, views: number, name: string, firebaseId: string}[]) {
     const result = [];
     for (let index = 0; index < a.length; index++) {
       const element = a[index];
       const exist = b.find(x => x.word === element.names.translations.en);
-      const obj = {...element, views: exist?.views ? exist.views : 0, firebaseId: exist?.firebaseId ? exist.firebaseId : undefined};
+      const obj = {...element, views: exist?.views ? exist.views : 0, firebaseId: exist?.firebaseId ? exist.firebaseId : undefined, name: exist?.name ? exist.name : undefined};
       result.push(obj);
     }
     return result;
@@ -48,26 +50,24 @@ export class FirebaseService {
   async counterIncrement(poi: iPois, uid?: string) {
     const index = this.pois.findIndex(p => p.id === poi.id)
     const poisToUpdate = this.pois[index]
-    console.log('poiUpdate', poisToUpdate);
-    
     const fbCollection = collection(this._firestore, 'recherches');
+    const byStore = where('name', '==', poi.wayfinder.building.name)
     const byWord = where('word', '==', poi.names.translations.en)
     let totalViews = 1
     let id = Date.now()
     let q;
     if(uid) {
       const byUserId: QueryConstraint = where('uid', '==', uid)
-      q = query(fbCollection, byUserId, byWord)
+      q = query(fbCollection, byUserId, byWord, byStore)
     } else {
-      q = query(fbCollection, byWord)
+      q = query(fbCollection, byWord, byStore)
     }
     const data = await collectionData(q, {idField: 'firebaseId'}).pipe(first()).toPromise();
     if (data.length === 0) {
       // create first count
       const fbDoc = doc(this._firestore, 'recherches/' +id);
-      console.log('id', id);
       poisToUpdate.firebaseId = id.toString()
-      if(uid) await setDoc(fbDoc, {word: poi.names.translations.en, views: 1, uid});
+      if(uid) await setDoc(fbDoc, {word: poi.names.translations.en, views: 1, name: poi.wayfinder.building.name, uid});
     } else {
       // increment counter
       totalViews = poisToUpdate.views ? ++poisToUpdate.views : 1
@@ -103,5 +103,10 @@ export class FirebaseService {
     } else {
       this.pois = pois
     }
+  }
+
+    getAllStores(): void{
+    const fbstorecol = collection(this._firestore, 'stores');
+    this.stores$ = collectionData(fbstorecol, {idField: 'id'});  
   }
 }

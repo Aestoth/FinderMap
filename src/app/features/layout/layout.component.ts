@@ -1,6 +1,7 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { authState, User, Auth, signInWithPopup, GoogleAuthProvider, signOut } from '@angular/fire/auth/'
 import { Router } from '@angular/router';
+import { iBuilding } from '@app/@interfaces/building';
 import { iPois } from '@app/@interfaces/pois';
 import { FirebaseService } from '@app/@services/firebase/firebase.service';
 import { StorageService } from '@app/@services/storage/storage.service';
@@ -18,6 +19,7 @@ export class LayoutComponent implements AfterViewInit {
   public user$: Observable<User | any> = of({})
   public pois: iPois[] = []
   public wf: any
+  public buildingName!: string
   
   
   constructor(
@@ -40,6 +42,14 @@ export class LayoutComponent implements AfterViewInit {
     async ngAfterViewInit() {
       await this._wfService.init()
       this.wf = this._wfService.wf
+      console.log('wf', this.wf);
+      
+
+      this._wfService.wf.events.on("data-loaded", () => {
+        this.buildingName = this._wfService.setBuildingName(this._wfService.wf.building, "lastWorld");
+        console.log('name', this.buildingName);
+         
+      })  
     }
 
     async ionViewWillEnter() {

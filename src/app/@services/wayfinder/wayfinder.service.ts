@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { iFloors } from '@app/@interfaces/floors';
+import { iBuilding } from '@app/@interfaces/building';
 import { iPois } from '@app/@interfaces/pois';
 
 
@@ -11,8 +11,8 @@ declare let Wayfinder3D: any;
 export class WayfinderService {
   public wf: any;
   public dataLoaded = false  
-  constructor() {}
 
+  constructor() {}
 
   /**
    * Initialize a promise of new Wayfinder instance
@@ -29,6 +29,8 @@ export class WayfinderService {
       }, 100)
     }) 
   }
+
+
 
 
   /**
@@ -83,6 +85,18 @@ export class WayfinderService {
    */
   getLang() {
     return this.wf.getLanguage()
+  }
+
+
+  /**
+   * Set the name og the building
+   * 
+   * @param bname target the building name
+   * @param value value to set
+   * @returns the set in value
+   */
+  setBuildingName(bname: iBuilding, value: string) {
+   return bname.name = value
   }
 
 }

@@ -1,51 +1,77 @@
 <ion-content [fullscreen]="true">
-<ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="welcome" color="white"></ion-back-button>
-      </ion-buttons>
-      <ion-button fill="clear" slot="end" *ngIf="user$|async as user" (click)="user?.uid ? logout() : login()">
-        <ion-icon size="large" [name]="user?.uid ? 'log-out' : 'log-in'"></ion-icon>
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-row class="logo">
-    <ion-col>
-      <ion-img src="assets/svg/shop.svg"></ion-img>
-    <ion-label>
-      <p class="ion-text-left logolabel"> Enjoy</p>
-    </ion-label>
-    </ion-col>
-  </ion-row>
+  <ion-header>
+      <ion-toolbar color='primary'>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="welcome" color="white"></ion-back-button>
+        </ion-buttons>
+        <ion-button fill="clear" slot="end" *ngIf="user$|async as user" (click)="user?.uid ? logout() : login()">
+          <ion-icon color="white" size="large" [name]="user?.uid ? 'log-out' : 'log-in'"></ion-icon>
+        </ion-button>
+      </ion-toolbar>
+    </ion-header>  
+  </ion-content>
   
-</ion-content>
+  <ion-footer>
+      <ion-list>
+        <ion-list-header class="ion-margin">
+          <ion-col size="6">
+            <h1 class="ion-no-margin">Walmarts</h1>
+          </ion-col>
+          <ion-col size="6">
+            <ion-buttons>
+              <ion-button color>See all</ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-list-header>
+        <ion-item-group class="ion-margin-horizontal">
+            <div class="ion-margin-vertical">
+              <ion-slides>
+                <ion-slide>
+                  <ion-card routerLink="/layout">
+                    <ion-img id="image" src="../../../assets/svg/place.svg"></ion-img>
+                    <ion-card-header>
+                      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                      <ion-card-title>Card Title</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      Keep close to Nature's heart... and break clear away, once in awhile,
+                      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                    </ion-card-content>
+                </ion-card>
+                </ion-slide>
+              </ion-slides>
+            </div>
+        </ion-item-group>
 
-<ion-footer>
-    <ion-list>
-      <ion-list-header class="ion-margin">
-        <ion-label>
-          New
-          <p><ion-text color="dark">Account</ion-text></p>
-        </ion-label>
-      </ion-list-header>
-  
-      <ion-item-group class="ion-margin-horizontal">
-        
+        <ion-list-header class="ion-margin">
+          <ion-col size="6">
+            <h1 class="ion-no-margin">featured</h1>
+          </ion-col>
+          <ion-col size="6">
+            <ion-buttons>
+              <ion-button color>See all</ion-button>
+            </ion-buttons>
+          </ion-col>
+        </ion-list-header>
+        <ion-item-group class="ion-margin-horizontal">
           <div class="ion-margin-vertical">
-            <ion-card routerLink="/layout">
-                <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+            <ion-slides>
+              <ion-slide>
+                <ion-card routerLink="/layout">
+                  <ion-img id="image" src="../../../assets/svg/place.svg"></ion-img>
+                  <ion-card-header>
+                    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                    <ion-card-title>Card Title</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    Keep close to Nature's heart... and break clear away, once in awhile,
+                    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+                  </ion-card-content>
               </ion-card>
+              </ion-slide>
+            </ion-slides>
           </div>
       </ion-item-group>
-  
-    </ion-list>
-  </ion-footer>
+    
+      </ion-list>
+    </ion-footer>
